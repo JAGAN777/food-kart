@@ -260,13 +260,12 @@ const HeroLocationForm = ({ mobileview, handleModalClose }) => {
         setZoneIdEnabled(true)
 
         if (currentLocation && location) {
-            // localStorage.setItem('location', currentLocation ?? '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India' )
-            localStorage.setItem('location', '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India' )
+            localStorage.setItem('location', currentLocation ?? '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India' )
             // localStorage.setItem('currentLatLng', JSON.stringify(location))
-            // localStorage.setItem('currentLatLng', JSON.stringify(location))
-            localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
-            // localStorage.setItem('zoneid', zoneData?.data?.zone_id)
-            localStorage.setItem('zoneid', JSON.stringify([1]))
+            localStorage.setItem('currentLatLng', JSON.stringify(location) ?? JSON.stringify({"lat":13.0088228,"lng":80.2209665}) )
+            // localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
+            localStorage.setItem('zoneid', zoneData?.data?.zone_id ?? JSON.stringify([1]))
+            // localStorage.setItem('zoneid', JSON.stringify([1]))
             handleModalClose()
             toast.success(t('New location has been set.'))
             router.push('/home')

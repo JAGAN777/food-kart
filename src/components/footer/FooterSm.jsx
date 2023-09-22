@@ -20,9 +20,9 @@ import Link from 'next/link'
 const FooterSm = (props) => {
     const { t } = useTranslation()
 
-    let zoneid = undefined
+    let zoneid = "[1]"
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
     }
     let token = undefined
     if (typeof window != 'undefined') {

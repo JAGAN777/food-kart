@@ -57,9 +57,9 @@ const HaveCoupon = ({ restaurant_id, setCouponDiscount, couponDiscount,foodAmoun
     useEffect(() => {
         setCouponCode(couponStorage)
         if (typeof window !== 'undefined') {
-            let zoneid = JSON.parse(localStorage.getItem('zoneid'))
+            let zoneid = JSON.parse(localStorage.getItem('zoneid')) ?? [1]
 
-            setZoneId(zoneid[0])
+            setZoneId(zoneid[1])
         }
 
         if (couponStorage) {

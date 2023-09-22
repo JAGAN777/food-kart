@@ -13,7 +13,7 @@ import DiscountBanner from './DiscountBanner'
 import { useGetLandingPageData } from '../../hooks/react-query/landing-page/useGetLandingPageData'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLandingPageData } from '../../redux/slices/storedData'
-import { NoSsr } from '@mui/material'
+// import { NoSsr } from '@mui/material'
 
 const LandingPage = (props) => {
     const { global } = props
@@ -23,7 +23,7 @@ const LandingPage = (props) => {
     const { landingPageData } = useSelector((state) => state.storedData)
     useEffect(async () => {
         if (typeof window !== 'undefined') {
-            setZoneid(JSON.parse(localStorage.getItem('zoneid')))
+            // setZoneid(JSON.parse(localStorage.getItem('zoneid')))
         }
     }, [])
     const handleModalClose = () => {}
@@ -108,9 +108,10 @@ const LandingPage = (props) => {
  
     </NoSsr>
     </div>  */}
-    <NoSsr>
-    <HomePage configData={global} />
-    </NoSsr>
+    {/* <NoSsr> */}
+    {/* <HomePage configData={global} /> */}
+    <HomePage />
+    {/* </NoSsr> */}
     
     </>)
 }

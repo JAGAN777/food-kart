@@ -150,7 +150,7 @@ const TopNav = (props) => {
     // }
 
     let location = undefined
-    let zoneid = undefined
+    let zoneid = [1]
     if (typeof window !== 'undefined') {
         location = localStorage.getItem('location')
         zoneid = JSON.parse(localStorage.getItem('zoneid'))

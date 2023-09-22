@@ -5,19 +5,19 @@ import CssBaseline from "@mui/material/CssBaseline";
 const HomeGuard = (props) => {
     const {children} = props
     const router = useRouter()
-    const [checked, setChecked] = useState(false)
+    const [checked, setChecked] = useState(true)
     useEffect(
         () => {
             if (!router.isReady) {
                 return
             }
             // const zoneId = JSON.parse(localStorage.getItem('zoneid'))
-            const zoneId =[1]
-            if (zoneId?.length > 0) {
-                setChecked(true)
-            } else {
-                router.push('/')
-            }
+            const zoneId = [1]
+            // if (zoneId?.length > 0) {
+            //     setChecked(true)
+            // } else {
+            //     router.push('/')
+            // }
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [router.isReady]

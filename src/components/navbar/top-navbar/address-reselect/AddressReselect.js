@@ -67,10 +67,10 @@ const AddressReselect = ({ location }) => {
               currentLatLng = JSON.parse(localStorage.getItem('currentLatLng'))
               const address = data.results[0].formatted_address;
               console.log("address", address);
-                // localStorage.setItem('location',address ?? '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
-                localStorage.setItem('location','2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
-                // localStorage.setItem('currentLatLng', JSON.stringify({"lat":latitude ?? 13.0088228,"lng":longitude ?? 80.2209665}))
-                localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
+                localStorage.setItem('location',address ?? '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
+                // localStorage.setItem('location','2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
+                localStorage.setItem('currentLatLng', JSON.stringify({"lat":latitude ?? 13.0088228,"lng":longitude ?? 80.2209665}))
+                // localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
                 localStorage.setItem('zoneid',JSON.stringify([1]))
             // setLocation(address);
             // setValue(data?.plus_code?.compound_code?.toString()?.split(' ')[1])
@@ -144,16 +144,16 @@ const AddressReselect = ({ location }) => {
 
     useEffect(() => {
         if (address) {
-            // localStorage.setItem('location', address?.address ?? '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
-            localStorage.setItem('location', '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
+            localStorage.setItem('location', address?.address ?? '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
+            // localStorage.setItem('location', '2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
             const values = { lat: address?.lat, lng: address?.lng} 
-            localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
-            // localStorage.setItem('currentLatLng', JSON.stringify(values))
+            // localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
+            localStorage.setItem('currentLatLng', JSON.stringify(values) ?? JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
             // localStorage.setItem('zoneid',JSON.stringify([1]))
             if (address.zone_ids && address.zone_ids.length > 0) {
                 const value = [address.zone_ids]
-                // localStorage.setItem('zoneid', JSON.stringify(address.zone_ids))
-                localStorage.setItem('zoneid', JSON.stringify([1]))
+                localStorage.setItem('zoneid', JSON.stringify(address.zone_ids) ?? JSON.stringify([1]))
+                // localStorage.setItem('zoneid', JSON.stringify([1]))
                 toast.success(t('New delivery address selected.'))
                 handleClosePopover()
                 dispatch(setClearCart())

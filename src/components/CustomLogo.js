@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 
 const CustomLogo = ({ logoImg, atlText, height, width }) => {
     const router = useRouter()
-    let zoneid = undefined
-    if (typeof window !== 'undefined') {
-        zoneid = JSON.parse(localStorage.getItem('zoneid'))
-    }
+    let zoneid = [1]
+    // if (typeof window !== 'undefined') {
+    //     zoneid = JSON.parse(localStorage.getItem('zoneid'))
+    // }
     const handleClick = () => {
         if (router.pathname === '/') {
             if (zoneid) {

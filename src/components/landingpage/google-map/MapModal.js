@@ -229,8 +229,8 @@ const MapModal = ({ open, handleClose }) => {
                 'location',
                 geoCodeResults?.data?.results[0]?.formatted_address
             )
-            // localStorage.setItem('currentLatLng', JSON.stringify(location))
-            localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
+            localStorage.setItem('currentLatLng', JSON.stringify(location) ?? JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
+            // localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
             toast.success(t('New location has been set.'))
             router.push('/home')
         }

@@ -91,9 +91,9 @@ const Homes = ({ configData }) => {
     //   }, []);
     const theme = useTheme()
     const isSmall = useMediaQuery(theme.breakpoints.down('md'))
-    let zoneid = undefined
+    let zoneid = [1]
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
     }
     const { data, refetch: refetchBannerData } = useQuery(
         ['banner-image'],

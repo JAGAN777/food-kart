@@ -18,10 +18,10 @@ const RestaurantJoin = () => {
     const { refetch, data } = useGetZone()
     const { t } = useTranslation()
     const { isLoading, mutate, onError } = useRestaurantJoin()
-    let zoneid = undefined
+    let zoneid ="[1]"
 
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
     }
 
     useEffect(async () => {
@@ -33,7 +33,7 @@ const RestaurantJoin = () => {
             if (zoneid) {
                 router.push('/home')
             } else {
-                router.push('/')
+                router.push('/home')
             }
         }
         mutate(values, {

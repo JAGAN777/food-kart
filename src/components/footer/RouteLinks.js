@@ -36,7 +36,8 @@ const RouteLinks = (props) => {
             value === 'popular' ||
             value === 'latest'
         ) {
-            const zoneId = localStorage.getItem('zoneid')
+            // const zoneId = localStorage.getItem('zoneid')
+            const zoneId = "[1]"
             if (zoneId) {
                 Router.push({
                     pathname: '/home',

@@ -15,7 +15,7 @@ const WalletProtect = (props) => {
                 router.push('/home')
             }
         } else {
-            router.push('/')
+            router.push('/home')
         }
     }
     return <>{handleChildren()}</>

@@ -78,7 +78,7 @@ const ProfilePage = () => {
         toast.success('Account has been deleted')
         handleCloseAuthModal()
         handleOpenAuthModal()
-        await router.push('/')
+        await router.push('/home')
     }
     const { mutate } = useUserDelete(onSuccessHandlerForUserDelete)
     const deleteUserHandler = () => {

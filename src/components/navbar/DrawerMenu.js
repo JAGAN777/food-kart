@@ -96,7 +96,7 @@ const DrawerMenu = ({ zoneid }) => {
             dispatch(setClearCart())
             toast.success(t(logoutSuccessFull))
             if (router.pathname === '/') {
-                router.push('/')
+                router.push('/home')
             } else {
                 router.push('/home')
             }

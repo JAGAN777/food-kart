@@ -14,10 +14,10 @@ const DeliveryPlace = () => {
     let zoneid = undefined
     let location = undefined
 
-    let languageDirection = undefined
+    let languageDirection = "[1]"
 
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
         languageDirection = localStorage.getItem('direction')
         location = localStorage.getItem('location')
     }

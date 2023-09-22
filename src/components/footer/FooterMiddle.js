@@ -30,9 +30,9 @@ const FooterMiddle = ({ landingPageLink }) => {
     const [foogcat,setFoodCat] = useState([])
     const { t } = useTranslation()
     const { featuredCategories } = useSelector((state) => state.storedData)
-    let zoneid = undefined
+    let zoneid = "[1]"
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
     }
 
     const FetchCategory = () => {

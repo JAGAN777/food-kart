@@ -207,11 +207,11 @@ const SecondNavbar = () => {
 
 
 
-    let zoneid = [1]
+    let zoneid = "[1]"
     let location = 'Select Your Location'
     let languageDirection = undefined
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
         languageDirection = localStorage.getItem('direction')
         location = localStorage.getItem('location') == 'null' ? location : localStorage.getItem('location')
     }

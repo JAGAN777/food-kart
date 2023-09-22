@@ -25,23 +25,23 @@ export default function index({ configData, landingPageData, pathName }) {
 }
 
 
-export const getServerSideProps = async ({ params, req, resolvedUrl }) => {
-    const domain = req.headers.host
-    const pathName = 'https://' + domain + resolvedUrl
-    const configRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
-        {
-            method: 'GET',
-            headers: CustomHeader,
-        }
-    )
-    const config = await configRes.json()
-    const landingPageData = await landingPageApi.getLandingPageImages()
-    return {
-        props: {
-            configData: config,
-            landingPageData: landingPageData.data,
-            pathName: pathName,
-        },
-    }
-}
+// export const getServerSideProps = async ({ params, req, resolvedUrl }) => {
+//     const domain = req.headers.host
+//     const pathName = 'https://' + domain + resolvedUrl
+//     const configRes = await fetch(
+//         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
+//         {
+//             method: 'GET',
+//             headers: CustomHeader,
+//         }
+//     )
+//     const config = await configRes.json()
+//     const landingPageData = await landingPageApi.getLandingPageImages()
+//     return {
+//         props: {
+//             configData: config,
+//             landingPageData: landingPageData.data,
+//             pathName: pathName,
+//         },
+//     }
+// }

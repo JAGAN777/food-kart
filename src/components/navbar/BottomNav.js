@@ -23,9 +23,9 @@ const BottomNav = (props) => {
     const { setSideDrawerOpen } = props
     const { cartList } = useSelector((state) => state.cart)
 
-    let zoneid = undefined
+    let zoneid = "[1]"
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
     }
     let token = undefined
     if (typeof window != 'undefined') {

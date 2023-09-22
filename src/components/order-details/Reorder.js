@@ -141,7 +141,8 @@ const Reorder = ({orderData, orderZoneId}) => {
     }
 
     const reorderAddToCart = () => {
-        const orderAbleZoneIds = JSON.parse(localStorage.getItem('zoneid'))
+        // const orderAbleZoneIds = JSON.parse(localStorage.getItem('zoneid'))
+        const orderAbleZoneIds = [1]
         const isZoneExist = orderAbleZoneIds?.length > 0 && orderAbleZoneIds.find(item => item === orderZoneId)
         if (isZoneExist) {
             const reorderAbleItem = getReorderAbleItems(data?.data, orderData)

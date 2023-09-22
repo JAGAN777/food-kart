@@ -22,7 +22,7 @@ const DeliveryDetails = (props) => {
                 <DeliveryTitle>{global?.cash_on_delivery && restaurantData?.data?.order_subscription_active && t('ORDER TYPE &')} {t('DELIVERY DETAILS')}</DeliveryTitle>
                 <FormControl>
                     {page!=='campaign' && global?.cash_on_delivery && restaurantData?.data?.order_subscription_active && <OrderType t={t} subscriptionStates={subscriptionStates}
-                                                        subscriptionDispatch={subscriptionDispatch}/> }
+                                                        subscriptionDispatch={subscriptionDispatch}/>}
 
                     <DeliveryCaption const id="demo-row-radio-buttons-group-label">
                         {t('Delivery Options')}

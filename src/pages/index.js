@@ -21,9 +21,9 @@ const Home = ({ configData, landingPageData }) => {
 
 
     useEffect(() => { 
-        localStorage.setItem('location','2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
-        localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
-        localStorage.setItem('zoneid',JSON.stringify([1]))
+        // localStorage.setItem('location','2/15, Samiyar Madam, Kodambakkam, Chennai, Tamil Nadu 600033, India')
+        // localStorage.setItem('currentLatLng', JSON.stringify({"lat":13.0088228,"lng":80.2209665}))
+        // localStorage.setItem('zoneid',JSON.stringify([1]))
 
         if (configData && landingPageData) {
             // if (configData.length === 0 && landingPageData.length === 0) {
@@ -43,17 +43,18 @@ const Home = ({ configData, landingPageData }) => {
                 title={configData?.business_name}
                 ogImage={`${configData?.base_urls?.react_landing_page_images}/${landingPageData?.banner_section_full?.banner_section_img_full}`}
             />
-            <PushNotificationLayout>
-                <div className='matop'>
-                {configData && landingPageData && (
-                    <LandingPage
+            {/* <PushNotificationLayout>
+                <div className='matop'> */}
+                {/* {configData && landingPageData && ( */}
+                    {/* <LandingPage
                         global={configData}
                         landingPageData={landingPageData}
-                    />
-                )}
-                </div>
-            </PushNotificationLayout>
-                {/* <HomePage configData={configData} /> */}
+                    /> */}
+                    {/* <LandingPage  /> */}
+                {/* )} */}
+                {/* </div>
+            </PushNotificationLayout> */}
+                <HomePage configData={configData} />
         </> 
     )
 }
@@ -63,30 +64,30 @@ const Home = ({ configData, landingPageData }) => {
 export default Home
 
 
-export const getServerSideProps = async () => {
-    const configRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
-        {
-            method: 'GET',
-            headers: CustomHeader,
-        }
-    )
-    const config = await configRes.json()
-    const landingPageRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
-        {
-            method: 'GET',
-            headers: CustomHeader,
-        }
-    )
-    const landingPageData = await landingPageRes.json()
-    return {
-        props: {
-            configData: config,
-            landingPageData: landingPageData,
-        },
-    }
-}
+// export const getServerSideProps = async () => {
+//     const configRes = await fetch(
+//         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
+//         {
+//             method: 'GET',
+//             headers: CustomHeader,
+//         }
+//     )
+//     const config = await configRes.json()
+//     const landingPageRes = await fetch(
+//         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/landing-page`,
+//         {
+//             method: 'GET',
+//             headers: CustomHeader,
+//         }
+//     )
+//     const landingPageData = await landingPageRes.json()
+//     return {
+//         props: {
+//             configData: config,
+//             landingPageData: landingPageData,
+//         },
+//     }
+// }
 
 
 // export const getServerSideProps = async ({ params, req, resolvedUrl }) => {

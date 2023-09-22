@@ -38,9 +38,9 @@ const FooterLg = (props) => {
     const businessLogo = global?.base_urls?.business_logo_url
     const isAppUrlExist = global?.app_url_android || global?.app_url_ios
 
-    let zoneid = undefined
+    let zoneid = [1]
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
     }
     let token = undefined
     if (typeof window != 'undefined') {

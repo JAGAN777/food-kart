@@ -15,12 +15,12 @@ const Navigation = () => {
     })
 
 
-    let zoneid = undefined
+    let zoneid = "[1]"
     let location = undefined
     let languageDirection = undefined
 
     if (typeof window !== 'undefined') {
-        zoneid = localStorage.getItem('zoneid')
+        // zoneid = localStorage.getItem('zoneid')
         languageDirection = localStorage.getItem('direction')
         location = localStorage.getItem('location')
     }

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const ZoneWiseGuard = ({ token, children }) => {
     if (!token) {
-        Router.push('/')
+        Router.push('/home')
     }
     return <>{token && children}</>
     // return (props) => {

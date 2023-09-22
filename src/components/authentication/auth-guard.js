@@ -12,10 +12,11 @@ const WithAuth = (Component) => {
 
         if (typeof window !== 'undefined') {
             const Router = useRouter()
-            const zoneid = localStorage.getItem('zoneid')
-            if (!zoneid) {
-                return <NotFound />
-            }
+            // const zoneid = localStorage.getItem('zoneid')
+            const zoneid = "[1]"
+            // if (!zoneid) {
+            //     return <NotFound />
+            // }
             return <Component {...props} />
         }
 

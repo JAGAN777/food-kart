@@ -22,7 +22,8 @@ MainApi.interceptors.request.use(function (config) {
     let hostname = process.env.NEXT_CLIENT_HOST_URL
 
     if (typeof window !== 'undefined') {
-        zoneId = localStorage.getItem('zoneid')
+        zoneId = localStorage.getItem('zoneid') ?? "[1]"
+        // zoneId = "[1]"
         token = localStorage.getItem('token')
         language = localStorage.getItem('language')
         currentLocation = JSON.parse(localStorage.getItem('currentLatLng'))
