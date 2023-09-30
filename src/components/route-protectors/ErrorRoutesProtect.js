@@ -7,7 +7,7 @@ const ErrorRoutesProtect = ({children}) => {
     const { data } = useQuery(
         ['config'],
         ConfigApi.config
-    )
+     )
     const handleRedirect =()=>{
         Router.push('/')
     }

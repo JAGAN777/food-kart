@@ -7,7 +7,8 @@ import { landingPageApi } from '../../components/landingpage/Api'
 import { CustomHeader } from '../../api/Headers'
 
 
-export default function index({ configData, landingPageData, pathName }) {
+// export default function index({ configData, landingPageData, pathName }) {
+  export default function index() {
   const { t } = useTranslation()
 
 
@@ -16,8 +17,8 @@ export default function index({ configData, landingPageData, pathName }) {
         <Meta
             // title={`${t('Testimonial')} on ${configData?.business_name}`}
             title={`${t('Testimonial')}`}
-            ogImage={`${configData?.base_urls?.react_landing_page_images}/${landingPageData?.banner_section_full?.banner_section_img_full}`}
-            pathName={pathName}
+            // ogImage={`${configData?.base_urls?.react_landing_page_images}/${landingPageData?.banner_section_full?.banner_section_img_full}`}
+            // pathName={pathName}
         />
         <Testimonial />
     </div>

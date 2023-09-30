@@ -13,7 +13,8 @@ import TrackingPage from '../../../components/order-tracking/TrackingPage'
 import { CustomHeader } from '../../../api/Headers'
 import { RTL } from '../../../components/RTL/RTL'
 
-const index = ({ configData }) => {
+// const index = ({ configData }) => {
+    const index = () => {
     const router = useRouter()
     const { id } = router.query
 
@@ -24,7 +25,6 @@ const index = ({ configData }) => {
             onError: onErrorResponse,
         }
     )
-
 
     return (
         <div className="div">
@@ -41,18 +41,19 @@ const index = ({ configData }) => {
 }
 
 export default index
-export const getServerSideProps = async () => {
-    const configRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
-        {
-            method: 'GET',
-            headers: CustomHeader,
-        }
-    )
-    const config = await configRes.json()
-    return {
-        props: {
-            configData: config,
-        },
-    }
-}
+
+// export const getServerSideProps = async () => {
+//     const configRes = await fetch(
+//         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
+//         {
+//             method: 'GET',
+//             headers: CustomHeader,
+//         }
+//     )
+//     const config = await configRes.json()
+//     return {
+//         props: {
+//             configData: config,
+//         },
+//     }
+// }

@@ -9,8 +9,9 @@ import CustomContainer from '../container'
 import { useTranslation } from 'react-i18next'
 
 
-const Privacypolicy = ({ configData }) => {
+const Privacypolicy = () => {
     const { t } = useTranslation()
+    const { global } = useSelector((state) => state.globalSettings);
 
     const theme = useTheme()
     return (
@@ -50,13 +51,16 @@ const Privacypolicy = ({ configData }) => {
                 </Grid>
                 <Grid item md={12} xs={12} sx={{ paddingBottom: '50px' }}>
                     {
-                        configData?.privacy_policy ? 
+                        global?.privacy_policy ? 
                     <StyleThemBox>
+                        <CustomContainer>
+
                         <div
                             dangerouslySetInnerHTML={{
-                                __html: configData?.privacy_policy,
+                                __html: global?.privacy_policy,
                             }}
                         ></div>
+                        </CustomContainer>
                     </StyleThemBox> : 
                                          <section className=''>
                                          <CustomContainer>

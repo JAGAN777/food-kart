@@ -25,7 +25,9 @@ const index = ({ configData }) => {
     )
 }
 index.getLayout = (page) => <AuthGuard>{page}</AuthGuard>
+
 export default index
+
 export const getServerSideProps = async () => {
     const configRes = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,

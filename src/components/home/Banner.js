@@ -15,6 +15,7 @@ import FoodDetailModal from '../foodDetail-modal/FoodDetailModal'
 import { useSelector } from 'react-redux'
 import Skeleton from '@mui/material/Skeleton'
 import { handleBadge } from '../../utils/customFunctions'
+
 const Banner = () => {
     const router = useRouter()
     const { banners } = useSelector((state) => state.storedData)

@@ -8,8 +8,10 @@ import { ConfigApi } from '../../hooks/react-query/config/useConfig'
 import { Container, CssBaseline } from '@mui/material'
 import ConditionPage from '../../components/terms-condition/ConditionPage'
 import { CustomHeader } from '../../api/Headers'
+import { useQuery } from 'react-query'
 
-const index = ({ configData }) => {
+const index = () => {
+
     return (
         <>
             <Meta
@@ -17,7 +19,7 @@ const index = ({ configData }) => {
                 title={`Terms and conditions `}
             />
             <CssBaseline />
-            <ConditionPage configData={configData} />
+            <ConditionPage configData={[]} />
             {/* <Container maxWidth="lg" sx={{ mb: { xs: '72px', md: '0' } }}>
                 <ConditionPage configData={configData} />
             </Container> */}
@@ -26,18 +28,20 @@ const index = ({ configData }) => {
 }
 
 export default index
-export const getServerSideProps = async () => {
-    const configRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
-        {
-            method: 'GET',
-            headers: CustomHeader,
-        }
-    )
-    const config = await configRes.json()
-    return {
-        props: {
-            configData: config,
-        },
-    }
-}
+
+// export const getServerSideProps = async () => {
+//     const configRes = await fetch(
+//         `https://foodkart.vrikshatech.in/api/v1/config`,
+//         {
+//             method: 'GET',
+//             headers: CustomHeader,
+//         }
+//     )
+//     const config = await configRes.json()
+//     console.log("hgjhfgjsdsd",config)
+//     return {
+//         props: {
+//             configData: config,
+//         },
+//     }
+// }

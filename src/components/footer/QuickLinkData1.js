@@ -44,9 +44,9 @@ export const QuickLinkData1 = [
         link: '/privacy-policy',
     },
     {
-        name: 'Return Policy',
-        value: 'return-policy',
-        link: '/',
+        name: 'Refund Policy',
+        value: 'refund-policy',
+        link: '/refund-policy',
     },
     {
         name: 'Terms & Condition',

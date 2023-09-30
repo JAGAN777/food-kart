@@ -703,6 +703,13 @@ export const tamil = {
     'My Subscriptions':'எனது சந்தாக்கள்',
     'Notification':'அறிவிப்பு',
     'About Us':'எங்களை பற்றி',
+    'How Do Things Work In Our Kitchens':'How Do Things Work In Our Kitchens',
+    'Favourite Home-Cooked Meal':'பிடித்த வீட்டில் சமைத்த உணவு',
+    'Our Current Journey':'நமது தற்போதைய பயணம்',
+    'Rating On Taste':'சுவை அடிப்படையில் மதிப்பீடு',
+    'Stay Fresh, Stay Updated':'புதியதாக இருங்கள், புதுப்பித்த நிலையில் இருங்கள்',
+    'Receive Latest News, Updates And Many Other News Every Week.':'ஒவ்வொரு வாரமும் சமீபத்திய செய்திகள், புதுப்பிப்புகள் மற்றும் பல செய்திகளைப் பெறுங்கள்.',
+    
     'Contact Us':'எங்களை தொடர்பு கொள்ள',
     'Privacy Policy':'தனியுரிமைக் கொள்கை',
     'Terms & Condition':'விதிமுறைகள் & நிபந்தனை',

@@ -8,7 +8,7 @@ import { Container, CssBaseline } from '@mui/material'
 import Privacypolicy from '../../components/privacy-policy/Privacypolicy'
 import { CustomHeader } from '../../api/Headers'
 
-const index = ({ configData }) => {
+const index = () => {
     return (
         <div className="div">
             <Meta 
@@ -16,7 +16,7 @@ const index = ({ configData }) => {
             title={`Privacy Policy`} 
              />
             <CssBaseline />
-            <Privacypolicy configData={configData} />
+            <Privacypolicy />
             {/* <Container
                 maxWidth="lg"
                 sx={{ mb: { xs: '72px', md: '0' } }}
@@ -29,18 +29,19 @@ const index = ({ configData }) => {
 }
 
 export default index
-export const getServerSideProps = async () => {
-    const configRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
-        {
-            method: 'GET',
-            headers: CustomHeader,
-        }
-    )
-    const config = await configRes.json()
-    return {
-        props: {
-            configData: config,
-        },
-    }
-}
+
+// export const getServerSideProps = async () => {
+//     const configRes = await fetch(
+//         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
+//         {
+//             method: 'GET',
+//             headers: CustomHeader,
+//         }
+//     )
+//     const config = await configRes.json()
+//     return {
+//         props: {
+//             configData: config,
+//         },
+//     }
+// }

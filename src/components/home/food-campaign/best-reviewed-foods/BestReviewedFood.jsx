@@ -9,6 +9,7 @@ import {
     Typography,
     Tab,
     Tabs,
+    Container
 } from '@mui/material'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
 import WbTwilightIcon from '@mui/icons-material/WbTwilight'
@@ -128,6 +129,7 @@ const BestReviewedFood = ({ data, isLoading }) => {
     //     }
     // )
 
+
     const FetchMenuList = (foodId) => {
         RestaurantsApi.MenuList(foodId).then(res => {
             setfoods(res.data?.data)
@@ -136,6 +138,7 @@ const BestReviewedFood = ({ data, isLoading }) => {
             console.error('err',err.message)
         })
     }
+
 
     // useEffect(()=> {
     //     FetchMenuList(foodId)
@@ -239,6 +242,7 @@ const BestReviewedFood = ({ data, isLoading }) => {
 
     const { global } = useSelector((state) => state.globalSettings)
     const languageDirection = localStorage.getItem('direction')
+
 
     const settings = {
         speed: 500,
@@ -450,7 +454,8 @@ const BestReviewedFood = ({ data, isLoading }) => {
 
     return (
         <>
-            <section className="wrapper mb-5 fadein">
+            <div className="wrapper mb-5 fadein">
+
                 <CustomContainer>
                     <div className="elem to-fade-in">
                         <Grid
@@ -459,63 +464,7 @@ const BestReviewedFood = ({ data, isLoading }) => {
                             }
                             gap="1.4rem"
                         >
-                            {/* {bestReviewedFoods?.length > 0 && (
-                <Grid item xs={12} md={12}>
-                    <CustomStackFullWidth
-                        direction="row"
-                        alignItems="center"
-                        justifyContent="space-between"
-                    >
-                        <Stack direction="row" spacing={1}>
-                            <CustomImageContainer
-                                src={best_foods.src}
-                                width="26px"
-                                height="26px"
-                            />
-                            <Typography
-                                variant="h3"
-                                color={theme.palette.neutral[1000]}
-                                fontWeight="500"
-                            >
-                                {t('Best Reviewed Foods')}
-                            </Typography>
-                        </Stack>
-                        <CustomViewAll
-                            onClick={handleClick}
-                            direction="row"
-                            spacing={1}
-                            alignItems="center"
-                        >
-                            {isXSmall && (
-                                <Typography>{t('View all')}</Typography>
-                            )}
-
-                            <IconButton
-                                sx={{
-                                    filter: 'drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.1))',
-                                    flex: 'none',
-                                    order: '1',
-                                    flexGrow: '0',
-                                    boxShadow: 3,
-                                }}
-                            >
-                                <KeyboardArrowRightIcon
-                                    color="primary"
-                                    style={{
-                                        width: '19px',
-                                        height: '19px',
-                                        transform:
-                                            languageDirection === 'rtl' &&
-                                            'rotate(180deg)',
-                                    }}
-                                    fontWeight="700"
-                                />
-                            </IconButton>
-                        </CustomViewAll>
-                    </CustomStackFullWidth>
-                </Grid>
-                             )} */}
-
+                            
                             <Grid item xs={12} md={12}>
                                 <CustomStackFullWidth
                                     direction="row"
@@ -539,45 +488,14 @@ const BestReviewedFood = ({ data, isLoading }) => {
                                             </span>
                                         </Typography>
                                     </Stack>
-                                    {/* <CustomViewAll
-                            onClick={handleClick}
-                            direction="row"
-                            spacing={1}
-                            alignItems="center"
-                        >
-                            {isXSmall && (
-                                <Typography>{t('View all')}</Typography>
-                            )}
-
-                            <IconButton
-                                sx={{
-                                    filter: 'drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.1))',
-                                    flex: 'none',
-                                    order: '1',
-                                    flexGrow: '0',
-                                    boxShadow: 3,
-                                }}
-                            >
-                                <KeyboardArrowRightIcon
-                                    color="primary"
-                                    style={{
-                                        width: '19px',
-                                        height: '19px',
-                                        transform:
-                                            languageDirection === 'rtl' &&
-                                            'rotate(180deg)',
-                                    }}
-                                    fontWeight="700"
-                                />
-                            </IconButton>
-                        </CustomViewAll> */}
+                                    
                                 </CustomStackFullWidth>
                             </Grid>
 
                             <Box sx={{ width: '100%', typography: 'body1' }}>
                                 <div className="home_Plans mt-3">
                                     {
-                                         allfoodlist?.data.data?.length > 0 &&
+                                         allfoodlist?.data?.data?.length > 0 &&
                                             <TabContext value={value} >
                                                 <Box
                                                     sx={{
@@ -607,164 +525,7 @@ const BestReviewedFood = ({ data, isLoading }) => {
                                                     </TabList>
                                                 </Box>
 
-                                                {/* {
-                                                    allfoodlist?.data.data?.map((data,index)=> {
-
-                                                        let dailyFoods = data?.description?.split(/\r?\n/)
-                                                        let transformedArr = {};
-                                                        let foodDataList = [] 
-
-                                                        for (let i = 0; i < dailyFoods?.length; i++) {
-                                                            let [day, items] = dailyFoods[i]?.split("-")?.map((value) => value.trim());
-                                                            transformedArr[day] = items?.split(",")?.map((value) => value.trim());
-                                                        }
-
-
-                                                        return(
-                                                        <TabPanel value={`${index+1}`} key={(index)}>
-                                                            <Grid>
-                                                                <Slider
-                                                                    className="slick__slider"
-                                                                    {...settings2}
-                                                                    ref={sliderRef}
-                                                                >
-                                                                {
-                                                                    Object.keys(transformedArr)?.map((foodData,index2)=>(
-                                                                    <div className="SubCategories_card" key={index2}>
-                                                                        <div className="d-flex justify-content-between align-items-center p-3 sub-cards pb-4">
-                                                                            <div className="">
-                                                                                <h5>{foodData}</h5>
-                                                                            </div>
-                                                                            <div className="">
-                                                                                <p className="text_color cursor-pointer mb-0">
-                                                                                    See All
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div className="row p-3">
-                                                                            {
-                                                                                transformedArr[foodData]?.map((value,index3)=>(                                    
-                                                                                    <div className="col-4 mb-3 cursor-pointer" key={index3}>
-                                                                                        <div className="text-center">
-                                                                                            <img
-                                                                                                src="/static/images/No_Image.jpg"
-                                                                                                className="img_varaity mb-2"
-                                                                                            />
-                                                                                            <h6 className="comlplete_1 ">
-                                                                                                {value}
-                                                                                            </h6>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                ))
-                                                                            }
-                                                                        </div>
-                                                                    </div>
-                                                                    ))
-                                                                }   
-                                                                </Slider>
-                                                            </Grid>
-                                                        </TabPanel>
-                                                        )
-                                                    })
-                                                } */}
-
-                                                {/* {
-                                                    allfoodlist?.data.data?.length > 0 && foods && 
-                                                    <TabPanel value="1"  >
-                                                    <TableContainer component={Paper}>
-                                                                <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-                                                                    <TableBody>
-                                                                    {( rows
-                                                                    ).map((row) => (
-                                                                        <TableRow key={row.name} sx={{whiteSpace:'break-spaces'}}>
-                                                                        <TableCell component="th" scope="row">
-                                                                            {row.name}
-                                                                        </TableCell>
-                                                                        <TableCell component="th" scope="row">
-                                                                            -
-                                                                        </TableCell>
-                                                                        <TableCell style={{ width:'100%' }} align="left">
-                                                                            {row.food}
-                                                                        </TableCell>
-                                                                        </TableRow>
-                                                                    ))}
-                                                                    {emptyRows > 0 && (
-                                                                        <TableRow style={{ height: 53 * emptyRows }}>
-                                                                        <TableCell colSpan={6} />
-                                                                        </TableRow>
-                                                                    )}
-                                                                    </TableBody>
-                                                                </Table>
-                                                    </TableContainer>                                            
-                                                    </TabPanel>
-                                                } 
-
-                                                {
-                                                    allfoodlist?.data.data?.length > 0 && foods &&  
-                                                    <TabPanel value="2">
-                                                
-                                                    <TableContainer component={Paper}>
-                                                                <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-                                                                    <TableBody>
-                                                                    {( rows
-                                                                    ).map((row) => (
-                                                                        <TableRow key={row.name} sx={{whiteSpace:'break-spaces'}}>
-                                                                        <TableCell component="th" scope="row">
-                                                                            {row.name}
-                                                                        </TableCell>
-                                                                        <TableCell component="th" scope="row">
-                                                                            -
-                                                                        </TableCell>
-                                                                        <TableCell style={{ width:'100%' }} align="left">
-                                                                            {row.food}
-                                                                        </TableCell>
-                                                                        </TableRow>
-                                                                    ))}
-                                                                    {emptyRows > 0 && (
-                                                                        <TableRow style={{ height: 53 * emptyRows }}>
-                                                                        <TableCell colSpan={6} />
-                                                                        </TableRow>
-                                                                    )}
-                                                                    </TableBody>
-                                                                </Table>
-                                                    </TableContainer>
-                                                
-                                                    </TabPanel>
-                                                }
-
-                                                {
-                                                    allfoodlist?.data.data?.length > 0 && foods &&  
-                                                    <TabPanel value="3">
-                                                
-                                                    <TableContainer component={Paper}>
-                                                                <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-                                                                    <TableBody>
-                                                                    {( rows
-                                                                    ).map((row) => (
-                                                                        <TableRow key={row.name} sx={{whiteSpace:'break-spaces'}}>
-                                                                        <TableCell component="th" scope="row">
-                                                                            {row.name}
-                                                                        </TableCell>
-                                                                        <TableCell component="th" scope="row">
-                                                                            -
-                                                                        </TableCell>
-                                                                        <TableCell style={{ width:'100%' }} align="left">
-                                                                            {row.food}
-                                                                        </TableCell>
-                                                                        </TableRow>
-                                                                    ))}
-                                                                    {emptyRows > 0 && (
-                                                                        <TableRow style={{ height: 53 * emptyRows }}>
-                                                                        <TableCell colSpan={6} />
-                                                                        </TableRow>
-                                                                    )}
-                                                                    </TableBody>
-                                                                </Table>
-                                                    </TableContainer>
-                                                
-                                                    </TabPanel>
-                                                } */}
+                                               
 
                                                 <TabPanel value="1">
                                                     <Slider
@@ -899,621 +660,40 @@ const BestReviewedFood = ({ data, isLoading }) => {
                                                     </Slider>
                                                 </TabPanel>
 
-                                                {/* <TabPanel value="3">
-                                                    <Slider
-                                                        className="slick__slider"
-                                                        {...settings2}
-                                                        ref={sliderRef}
-                                                    >
-                                                        <div className="SubCategories_card">
-                                                            <div className="d-flex justify-content-between align-items-center p-3 sub-cards pb-4">
-                                                                <div className="">
-                                                                    <h5>Monday</h5>
-                                                                </div>
-                                                                <div className="">
-                                                                    <p className="text_color mb-0">
-                                                                        See All
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="row p-3">
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/3.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Pongal
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/10.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Tiffin
-                                                                            Sambar
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/5.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            podi idly
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/2.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Poori
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/9.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Chenna
-                                                                            Masala
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="SubCategories_card">
-                                                            <div className="d-flex justify-content-between align-items-center p-3 sub-cards pb-4">
-                                                                <div className="">
-                                                                    <h5>Tuesday</h5>
-                                                                </div>
-                                                                <div className="">
-                                                                    <p className="text_color mb-0">
-                                                                        See All
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="row p-3">
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/3.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Pongal
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/10.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Tiffin
-                                                                            Sambar
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/5.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            podi idly
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/2.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Poori
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/9.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Chenna
-                                                                            Masala
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="SubCategories_card">
-                                                            <div className="d-flex justify-content-between align-items-center p-3 sub-cards pb-4">
-                                                                <div className="">
-                                                                    <h5>Wednesday</h5>
-                                                                </div>
-                                                                <div className="">
-                                                                    <p className="text_color mb-0">
-                                                                        See All
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="row p-3">
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/3.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Pongal
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/10.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Tiffin
-                                                                            Sambar
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/5.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            podi idly
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/2.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Poori
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/9.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Chenna
-                                                                            Masala
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="SubCategories_card">
-                                                            <div className="d-flex justify-content-between align-items-center p-3 sub-cards pb-4">
-                                                                <div className="">
-                                                                    <h5>Thursday</h5>
-                                                                </div>
-                                                                <div className="">
-                                                                    <p className="text_color mb-0">
-                                                                        See All
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="row p-3">
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/3.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Pongal
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/10.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Tiffin
-                                                                            Sambar
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/5.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            podi idly
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/2.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Poori
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/9.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Chenna
-                                                                            Masala
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="SubCategories_card">
-                                                            <div className="d-flex justify-content-between align-items-center p-3 sub-cards pb-4">
-                                                                <div className="">
-                                                                    <h5>Friday</h5>
-                                                                </div>
-                                                                <div className="">
-                                                                    <p className="text_color mb-0">
-                                                                        See All
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="row p-3">
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/3.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Pongal
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/10.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Tiffin
-                                                                            Sambar
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/5.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            podi idly
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/2.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Poori
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/9.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Chenna
-                                                                            Masala
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="SubCategories_card">
-                                                            <div className="d-flex justify-content-between align-items-center p-3 sub-cards pb-4">
-                                                                <div className="">
-                                                                    <h5>Staturday</h5>
-                                                                </div>
-                                                                <div className="">
-                                                                    <p className="text_color mb-0">
-                                                                        See All
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="row p-3">
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/3.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Pongal
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/10.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Tiffin
-                                                                            Sambar
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/5.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            podi idly
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/2.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Poori
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/9.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Chenna
-                                                                            Masala
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="SubCategories_card">
-                                                            <div className="d-flex justify-content-between align-items-center p-3 sub-cards pb-4">
-                                                                <div className="">
-                                                                    <h5>Sunday</h5>
-                                                                </div>
-                                                                <div className="">
-                                                                    <p className="text_color mb-0">
-                                                                        See All
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="row p-3">
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/3.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Pongal
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/10.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Tiffin
-                                                                            Sambar
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/5.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            podi idly
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/2.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Poori
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-4 mb-3">
-                                                                    <div className="text-center">
-                                                                        <img
-                                                                            src="/static/images/menu/9.jpg"
-                                                                            className="img_varaity mb-2"
-                                                                        />
-                                                                        <h6 className="comlplete_1">
-                                                                            Chenna
-                                                                            Masala
-                                                                        </h6>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </Slider>
-                                                </TabPanel> */}
+                                              
                                             </TabContext>
                                     }
                                 </div>
                             </Box>
 
-          {/* <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                onMouseEnter={() => setHoverOn(true)}
-                onMouseLeave={() => setHoverOn(false)}
-                sx={{ position: 'relative' }}
-            >
-                {!isLoading ? (
-                    <Grid
-                        container
-                        item
-                        lg={12}
-                        md={12}
-                        xs={12}
-                        position="relative"
-                    >
-                        <CustomStackFullWidth justifyContent="right">
-                            <SliderCustom languageDirection={languageDirection}>
-                                <Slider
-                                    ref={foodCampaignSliderRef}
-                                    {...settings}
-                                >
-                                    {bestReviewedFoods
-                                        .slice(0, 10)
-                                        .map((product) => {
-                                            if (
-                                                product?.variations === null ||
-                                                product?.variations[0]
-                                                    ?.values ||
-                                                product?.variations?.length ===
-                                                    0
-                                            ) {
-                                                return (
-                                                    <FoodCard
-                                                        key={product?.id}
-                                                        hasBackGroundSection="false"
-                                                        product={product}
-                                                        global={global}
-                                                        productImageUrl={
-                                                            global?.base_urls
-                                                                ?.product_image_url
-                                                        }
-                                                    />
-                                                )
-                                            }
-                                        })}
-                                </Slider>
-                            </SliderCustom>
-                        </CustomStackFullWidth>
-                    </Grid>
-                ) : (
-                    <Stack marginTop="40px" spacing={2}>
-                        <Skeleton
-                            variant="rectangular"
-                            width="400px"
-                            height="20px"
-                        />
-                        <SliderCustom>
-                            <Slider {...settings}>
-                                <FoodCardShimmer />
-                                <FoodCardShimmer />
-                                <FoodCardShimmer />
-                                <FoodCardShimmer />
-                                <FoodCardShimmer />
-                            </Slider>
-                        </SliderCustom>
-                    </Stack>
-                )}
-            </Grid> */}
+         
                         </Grid>
                     </div>
                 </CustomContainer>
-        </section>
+           </div>
 
-            <section className="mb-5 wrapper fadein">
+            <div className="mb-5 wrapper fadein get_app">
                 <CustomContainer>
-                    <div className="elem to-fade-in">
-                        <Grid item xs={12} md={12}>
-                            <CustomStackFullWidth
+                    <div className="elem to-fade-in ">
+                    <div className='d-flex justify-content-center w-100'>
+                        <div className='text-center w-100 mb-3'>
+                            <h5 className='mb-2 fw-bold '>{t('Why Choose Us')}</h5>
+                            <h4 className='fw-bold'>{t('What people say')}</h4>
+                        </div>
+                        </div>
+                        {/* <Grid item xs={12} md={12} className='justify-content-center'> */}
+                            {/* <CustomStackFullWidth
                                 direction="row"
                                 alignItems="center"
-                                justifyContent="center"
-                            >
-                                <Stack direction="row" spacing={1}>
+                                className='justify-content-center'
+                            > */}
+                                {/* <Stack direction="row" className='justify-content-center' spacing={1}> */}
                                     {/* <CustomImageContainer
-                            src={best_foods.src}
-                            width="26px"
-                            height="26px"
-                        /> */}
-                                    <Typography
+                                        src={best_foods.src}
+                                        width="26px"
+                                        height="26px"
+                                    /> */}
+                                    {/* <Typography
                                         variant="h3"
                                         color={theme.palette.neutral[1000]}
                                         fontWeight="500"
@@ -1527,9 +707,9 @@ const BestReviewedFood = ({ data, isLoading }) => {
                                             </h4>
                                         </div>
                                     </Typography>
-                                </Stack>
-                            </CustomStackFullWidth>
-                        </Grid>
+                                </Stack> */}
+                            {/* </CustomStackFullWidth> */}
+                        {/* </Grid> */}
 
                         <div className="mt-3 people_say mb-3">
                             <div className="row align-items-center">
@@ -1602,8 +782,8 @@ const BestReviewedFood = ({ data, isLoading }) => {
                             </div>
                         </div>
                     </div>
-                </CustomContainer>
-            </section>
+                </CustomContainer >
+            </div>
         </>
     )
 }

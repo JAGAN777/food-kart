@@ -8,41 +8,44 @@ import RefundPolicy from '../../components/refund-policy/RefundPolicy'
 import { useRouter } from 'next/router'
 import ProtectRefund from './ProtectRefund'
 import { ConfigApi } from '../../hooks/react-query/config/useConfig'
-import { Container, CssBaseline } from '@mui/material'
+import { Container, CssBaseline, Box, Grid, Typography  } from '@mui/material'
 import RefundPolicyPage from '../../components/refund-policy/RefundPolicyPage'
 import { CustomHeader } from '../../api/Headers'
+import CustomContainer from '../'
 
-const index = ({ configData }) => {
+const index = () => {
+
     return (
         <>
-            <Meta title={`Refund Policy - ${configData?.business_name}`} />
+            <Meta title={`Refund Policy`} />
             <CssBaseline />
-            <Container
+            {/* <Container
                 maxWidth="lg"
                 sx={{ mb: { xs: '72px', md: '0' } }}
                 paddingTop="1rem"
-            >
-                <ProtectRefund>
-                    <RefundPolicyPage configData={configData} />
-                </ProtectRefund>
-            </Container>
+            > */}
+                {/* <ProtectRefund> */}
+                <RefundPolicyPage />
+                {/* </ProtectRefund> */}
+            {/* </Container> */}
         </>
     )
 }
 
 export default index
-export const getServerSideProps = async () => {
-    const configRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
-        {
-            method: 'GET',
-            headers: CustomHeader,
-        }
-    )
-    const config = await configRes.json()
-    return {
-        props: {
-            configData: config,
-        },
-    }
-}
+
+// export const getServerSideProps = async () => {
+//     const configRes = await fetch(
+//         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,
+//         {
+//             method: 'GET',
+//             headers: CustomHeader,
+//         }
+//     )
+//     const config = await configRes.json()
+//     return {
+//         props: {
+//             configData: config,
+//         },
+//     }
+// }

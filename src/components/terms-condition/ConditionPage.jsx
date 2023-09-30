@@ -9,6 +9,8 @@ import CustomContainer from '../container';
 
 const ConditionPage = ({ configData }) => {
     const { t } = useTranslation()
+    const { global } = useSelector((state) => state.globalSettings);
+
     const theme = useTheme()
     return (
         <Box sx={{ marginTop: { xs: '80px', md: '150px' } }}>
@@ -38,8 +40,8 @@ const ConditionPage = ({ configData }) => {
                             <CustomContainer>
                                 <div className="position-absolute translate-middle top-50 ">
                                     {/* <h4 className='fade-in fw-bold'>Where Every meal is cooked with <span className='text_color'>love</span></h4> */}
-                                    <h4 className="fade-in fw-bold fs-2 ">
-                                       Our Terms and conditions
+                                    <h4 className="fade-in fw-bold fs-2 mb-3">
+                                       {t("Our Terms and conditions")}
                                     </h4>
                                 </div>
                             </CustomContainer>
@@ -48,13 +50,16 @@ const ConditionPage = ({ configData }) => {
                 </Grid>
                 <Grid item md={12} xs={12} sx={{ paddingBottom: '50px' }}>
                     {
-                        configData?.terms_and_conditions ? 
+                        global?.terms_and_conditions ? 
                     <StyleThemBox>
-                        <div
+                         <CustomContainer>
+                        <div className='mt-3'
                             dangerouslySetInnerHTML={{
-                                __html: configData?.terms_and_conditions,
+                                __html: global?.terms_and_conditions,
                             }}
-                        ></div>
+                        >
+                        </div>
+                        </CustomContainer>
                     </StyleThemBox> : 
                      <section className=''>
                          <CustomContainer>

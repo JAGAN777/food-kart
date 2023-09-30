@@ -13,7 +13,8 @@ const ProtectRefund = props => {
     return (
         <div>
             {
-                global && Number.parseInt(global?.refund_policy_status)===0 ? handleRedirect() : children
+                global && Number.parseInt(global?.refund_policy_status) === 0 ? handleRedirect() : children
+                // global && !global?.refund_active_status ? handleRedirect() : children
             }
 
         </div>

@@ -19,7 +19,8 @@ const Index = ({ configData }) => {
 
     return (
         <div>
-            <Meta title={`${data?.title} - ${configData?.business_name}`} />
+            <Meta
+             title={`${data?.title}`} />
             <CustomContainer>
                 <BasicCampaign
                     campaignsDetails={data}
@@ -33,6 +34,7 @@ const Index = ({ configData }) => {
 }
 
 export default Index
+
 export const getServerSideProps = async ({ params: { id }, resolvedUrl }) => {
     const configRes = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/config`,

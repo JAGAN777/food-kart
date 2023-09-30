@@ -71,19 +71,19 @@ export default function ContactUs() {
 
   return (
     <CssBaseline>
-        <section className='mb-5'>
+        <div className='mb-5'>
         <div className='menu_bg2 position-relative '>
         <img src='/static/images/Banner/banner_contact.png' className='w-100' />
         <CustomContainer>
         <div className='position-absolute translate-middle top-50 '>
             {/* <h4 className='fade-in fw-bold'>Where Every meal is cooked with <span className='text_color'>love</span></h4> */}
-            <h4 className='fade-in fw-bold fs-3'>Contact Us</h4>
+            <h4 className='fade-in fw-bold fs-3'>{t('contact-us')}</h4>
         </div>
         </CustomContainer>
         </div>
-     </section>
+     </div>
 
-     <section className='mb-5'>
+     <div className='mb-5'>
      <CustomContainer>
         <div className='row justify-content-center'>
             <div className='col-md-6 mb-3'>
@@ -232,19 +232,19 @@ export default function ContactUs() {
                                     )}                          
                                       </div>
                             <div className='col-md-12 mb-4 d-none'>
-                            <label className='form-label'>How can help you</label>
+                            <label className='form-label'>{t("How can help you")}</label>
                             <div >
                             <div class="form-check form-check-inline" onClick={()=>setCanHelp('Delivery')}>
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-                                <label class="form-check-label" for="inlineRadio1">Delivery</label>
+                                <label class="form-check-label" for="inlineRadio1">{t("Delivery")}</label>
                                 </div>
                                 <div class="form-check form-check-inline"  onClick={()=>setCanHelp('Cook')}>
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                <label class="form-check-label" for="inlineRadio2">Cook</label>
+                                <label class="form-check-label" for="inlineRadio2">{t("Cook")}</label>
                                 </div>
                                 <div class="form-check form-check-inline"  onClick={()=>setCanHelp('Food')}>
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" />
-                                <label class="form-check-label" for="inlineRadio3">Food</label>
+                                <label class="form-check-label" for="inlineRadio3">{t("Food")}</label>
                                 </div>
                             </div>
                             {/* {formik.touched.password && formik.errors.password && (
@@ -259,7 +259,7 @@ export default function ContactUs() {
                             </div>
                             <div className='col-md-12 mb-4'>
                                 <div className=''>
-                                <label className='form-label'>How can help you</label>
+                                <label className='form-label'>{t("How can help you")}</label>
                                     <textarea type='text' className='form-control'  {...formik.getFieldProps("feedback")} placeholder='Give you Feed back your mind..' rows={3} />
                                 </div>
                                 {formik.touched.feedback && formik.errors.feedback && (
@@ -273,7 +273,7 @@ export default function ContactUs() {
                                     )}
                             </div>
                             <div className=''>
-                                <button type='submit' className='btn btn_sub px-5'>Submit</button>
+                                <button type='submit' className='btn btn_sub px-5'>{t('Submit')}</button>
                             </div>
                         </div>
                     </form>
@@ -281,7 +281,7 @@ export default function ContactUs() {
             </div>
         </div>
      </CustomContainer>
-     </section>
+     </div>
 
      </CssBaseline>
 
